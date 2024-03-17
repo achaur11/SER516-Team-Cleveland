@@ -44,6 +44,14 @@ jobs:
           pip install -r requirements.txt
           pip install -e .
 
+      - name: SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_ACCESS }}
+          SONAR_TOKEN: ${{ secrets.SONAR_ACCESS }}
+        with:
+          projectBaseDir: taigaProject
+
       - name: Setup Pages
         uses: actions/configure-pages@v3
       
